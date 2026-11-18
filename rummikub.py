@@ -3,14 +3,21 @@ COLOURS = ["black", "blue", "orange", "red"]
 NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
 
-
+# tile = ["colour", number]
 # tile = ["black", 4]
 
 
 
 
 
-# [ ["black", [tiles] ],["blue", [tiles] ],["orange", [tiles] ],["red", [tiles] ] ]
+# deck = {
+#   "black": [1, 4, 4, 7],
+#   "blue": [2, 5],
+#   "orannge": [3, 5, 5, 6, 11],
+#   "red": []
+# }
+#
+
 
 
 
@@ -32,18 +39,13 @@ def dist_between_tiles(tile1num, tile2num):
 
 
 
-def colour_to_index(colour):
-   if colour == "black":
-      return 0
-   
-   elif colour == "blue":
-      return 1
-   
-   elif colour == "orange":
-      return 2
-   
-   elif colour == "red":
-      return 3
+def add_to_deck(tile, deck):
+   deck.update({tile_colour(tile): deck[tile_colour].append(tile_colour(tile))})
+   print(f"LOG: tile {tile} added to deck")
+
+def remove_from_deck(tile, deck):
+   deck.update({tile_colour(tile): deck[tile_colour].remove(tile_colour(tile))})
+   print(f"LOG: tile {tile} removed from deck")
 
 
 
@@ -52,4 +54,4 @@ def sort_deck(deck):
    for tile in deck:
       for colour in COLOURS:
          if tile_colour(tile) == colour:
-            deck[colour_to_index(colour)][1].append(tile)
+            
