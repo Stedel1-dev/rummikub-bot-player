@@ -1,0 +1,70 @@
+Deck - reffers to the player's current cards
+In Play - reffers to cards on the board/in play
+Pile - reffers to cards in the sack; place cards are to be drawn from
+Pack - reffers to the set of tiles in play in a row
+Place - placing a pack or adding to an established pack
+Throw Out - removing a card from your deck into the draw pile, signifying the end of your turn
+Pick Up - picking up a card from the draw pile adding to your deck, signifying the begninning of your turn
+Board - where the packs are placed
+
+
+
+There are 106 tiles: 2 jokers + 2 sets of each (4) colours (totaling to 8) sets of 1-13 (2 sets of red (26), 2 sets of blue (26),
+2 sets of orange (26), 2 sets of black (26))
+
+Colours are 'Black, Blue, Orange, Red'
+
+The joker represents any tile, regardless of colour or value is is any tile
+
+The game is started by all players picking up from the draw pile. the player with the highest value begins (a joker is the highest,
+imagine it as 14) and is then decided clockwise from the begining player
+
+
+
+Rules:
+
+
+
+- Packs must have a length of 3 or greater
+
+
+
+- The sets loop meaning that a 1 can be placed after a 13 so that packs such as '12 13 1' are valid
+
+
+
+- Packs can be made either by being of the same colour or of the same number
+   The 'colour packs' numbers must be consecutive, meaning the pack must be as shown: [4, 5, 6], [11, 12, 13, 1], not: [2, 4, 7]
+   The 'same number packs' must not repeat the same colour, meaning that [orange, red, blue] is valid, but [black blue red black]
+   is not; one black can be removed and it becomes valid
+
+
+
+- You cannot place a deck onto the board on your first turn
+
+
+
+- You cannot add to an established pack or change other packs before placing down a pack of your own
+
+
+
+- You can change packs already placed, for example if you have a {black 3} and {black 4}, and there is a pack on the board with a 
+  [black 5, black 6, black 7, black 8], you can take the {5} and place down your {black 3} and {black 4} alongside it to make 
+  [black 3, 4, 5]
+
+
+
+- When a pack is changed, it must still be valid so no packs less than 3 or with unconsecutive numbers
+
+   This means you can also split packs. eg: you have {black 5}, on board: [black 2, 3, 4, 5, 6, 7]. you can split it into [2, 3, 4] 
+   and [5, 6, 7] and place your {5} to make it [2, 3, 4, 5] and [5, 6, 7]
+
+   You can also merge packs to further change it. eg: you have {red 9} and {orange 9} on board: [black 4, 5, 6] and [black 7, 8 , 9].
+   merge to make [black 4, 5, 6, 7, 8, 9] and then take the {9} to make [red, orange, black 9 pack] and [black 4, 5, 6, 7, 8 pack]
+   
+   You can replace a card with one of the same value which is redundant as you are left with the same card which you cannot add to your 
+   deck as it has been already placed
+
+      However, this becomes useful with jokers. eg: you have {black 5} and {blue 10} and {blue 11}, board has [black 4, joker, 6],
+      you can replace the joker with the {black 5} and use the joker with your other cards to make [black 4, 5, 6 pack] and
+      [blue 10, 11, joker]

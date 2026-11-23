@@ -1,3 +1,5 @@
+import random
+
 # tile = ["colour", number]
 # tile = ["black", 4]
 
@@ -6,14 +8,50 @@
 
 
 # deck = {
-#   "black": [1, 4, 4, 7],
-#   "blue": [2, 5],
-#   "orange": [3, 5, 5, 6, 11],
+#   "black": [ [1, False], [4, False], [4, False], [7, False] ],
+#   "blue": [ [2, False], [5, False] ],
+#   "orange": [ [3, False], [5, False], [5, False], [6, False], [11, False] ],
 #   "red": []
+#   "joker": [None, True]
 # }
 #
 
 
+
+def init_pile():
+   pile = []
+   
+   colours = ["black", "blue", "orange", "red"]
+   numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+   
+   for _ in range(2):
+      for colour in colours:
+         for number in numbers:
+            pile.append([colour, number, False]) # [colour, number, isJoker]
+
+      pile.append([None, None, True]) # joker tile
+   
+   return pile
+      
+
+
+
+def init_deck(pile):
+   deck = {}
+   
+   for _ in range(14):
+      tile = random.choice(pile)
+      pile.remove(tile)
+      
+      add_to_deck(tile, deck)
+      
+   return deck
+      
+      
+      
+      
+      
+      
 
 
 def tile_colour(tile):
@@ -26,6 +64,12 @@ def tile_num(tile):
 
 
 
+def is_joker(tile):
+   return tile[2]
+
+
+
+
 def dist_between_tiles(tile1num, tile2num):
    loopSize = 13
       
@@ -35,12 +79,12 @@ def dist_between_tiles(tile1num, tile2num):
 
 
 def add_to_deck(tile, deck):
-   deck[tile_colour].append(tile_num(tile))
+   deck[tile_colour(tile)].append(tile_num(tile))
    print(f"LOG: tile {tile} added to deck")
 
 
 
 def remove_from_deck(tile, deck):
-   deck[tile_colour].remove(tile_num(tile))
+   deck[tile_colour(tile)].remove(tile_num(tile))
    print(f"LOG: tile {tile} removed from deck")
 

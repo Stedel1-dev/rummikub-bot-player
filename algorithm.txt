@@ -1,0 +1,27 @@
+
+
+
+makes a checkpoint   <-------------------------------------------------------------------
+|                                                                                       |
+-> scans for a valid pack combination                                                   |
+   |                                                                                    |
+   -> if valid/True:                                                                    |
+   |  |                                                                                 |
+   |  -> compare if state has already been achived (repeated)                           |
+   |     |                                                                              |
+   |     -> if repeated/True -> go back to previous checkpoint and mark move invalid    |
+   |     |                                                                              |
+   |     -> if not repeated/False -> continue algorithm ---------------------------------
+   |
+   |
+   -> if invalid/False:
+      |
+      -> if boardstate and deckstate are valid:
+         |
+         -> if valid/True -> return state as valid and go back to previous checkpoint and mark move invalid
+         |
+         -> if invalid/False -> go back the previous checkpoint and mark move invalid
+
+
+algorithm finishes once returned back to the first state
+
