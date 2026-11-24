@@ -9,17 +9,17 @@ makes a checkpoint   <----------------------------------------------------------
    |  |                                                                                           |
    |  -> compare if state has already been achived (repeated)                                     |
    |     |                                                                                        |
-   |     -> if repeated/True -> go back to previous checkpoint and add state to achived states    | 
-   |     |                                                                                        |
-   |     -> if not repeated/False -> continue algorithm -------------------------------------------
-   |
+   |     -> if repeated/True -> go back to previous checkpoint and add state to achived states    |
+   |     |                           ============================                                 |
+   |     -> if not repeated/False -> save state to possible plays and continue algorithm ----------
+   |                                 ============================
    |
    -> if invalid/False:
       |
       -> if boardstate and deckstate are valid:
-         |
-         -> if valid/True -> return state as valid and go back to previous checkpoint and add state to achived states
-         |
+         |                   ============================
+         -> if valid/True -> save state to possible plays and go back to previous checkpoint and add state to achived states
+         |                   ============================
          -> if invalid/False -> go back the previous checkpoint and add state to achived states
 
 

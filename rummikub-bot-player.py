@@ -19,45 +19,32 @@ import random
 # }
 
 
-stedel1@Lenovo-100e:~/Documents/coding$ cd /rummikub-bot-player-folder
-bash: cd: /rummikub-bot-player-folder: No such file or directory
+
+
+
+
 
 
 def init_pile():
    
-   colours = ["black", "blue", "orange", "red", "joker"]
+   colours = ["black", "blue", "orange", "red"] # joker is also a colour, but isnt put here
    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-   
-   
-   
-   init = [2,0] # 2 fixed tiles, 0 jokers (representing the specific colour + number)
-   
-   
-   for number in numbers:
-      
-      
-   
-   
-   
-   
-   
-   
    pile = {}
+   
    
    for colour in colours:
       
-      if colour != "joker":
-      pile[colour] = [numbers]
+      pile[colour] = {}
       
+      for number in numbers:
+         
+         pile[colour][number] = [2, 0] # 2 fixed tiles, 0 jokers (representing the specific colour + number)
    
    
+   pile["joker"] = {}
    
-   
-   
-   
-
-
-
+   pile["joker"][0] = [0, 2] # 2 jokers in this tile path 
+   # pile = { "joker": {0: [0, 2]} }
    
    
    return pile
@@ -68,10 +55,49 @@ def init_pile():
 
 def init_deck(pile):
    
+   deck = {}
    
+
+   colours = ["black", "blue", "orange", "red"] # joker is also a colour, but isnt put here
+   numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
    
+   for colour in colours:
+         
+         deck[colour] = {}
+         
+         for number in numbers:
+            
+            pile[colour][number] = [0, 0]
       
-   return deck
+   deck["joker"] = {}
+   
+   deck["joker"][0] = [0, 0]
+      
+      
+      
+   pileList = []
+   # makes a list from the dict (pile)
+   for _ in range(2):
+      for colour, numbers in pile.items():
+         for number, _ in numbers.items():
+            pileList.append((colour, number))
+   
+   
+   for _ in range(14):
+      tile = random.choice(pileList)
+      pileList.remove(tile)
+      
+      colour, number = tile
+      
+      deck[colour] = {}
+      deck[colour][number] 
+      
+      
+      
+   
+   
+   
+   return deck, pile
       
       
       
@@ -96,4 +122,3 @@ def add_to_deck():
 
 def remove_from_deck():
    
-
