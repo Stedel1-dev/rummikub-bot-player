@@ -1,27 +1,70 @@
 
+state checker algorithm:
 
-
-makes a checkpoint   <-------------------------------------------------------------------
-|                                                                                       |
--> scans for a valid pack combination                                                   |
-   |                                                                                    |
-   -> if valid/True:                                                                    |
-   |  |                                                                                 |
-   |  -> compare if state has already been achived (repeated)                           |
-   |     |                                                                              |
-   |     -> if repeated/True -> go back to previous checkpoint and mark move invalid    |
-   |     |                                                                              |
-   |     -> if not repeated/False -> continue algorithm ---------------------------------
+makes a checkpoint   <-----------------------------------------------------------------------------
+|                                                                                                 |
+-> scans for a valid pack combination                                                             |
+   |                                                                                              |
+   -> if valid/True:                                                                              |
+   |  |                                                                                           |
+   |  -> compare if state has already been achived (repeated)                                     |
+   |     |                                                                                        |
+   |     -> if repeated/True -> go back to previous checkpoint and add state to achived states    | 
+   |     |                                                                                        |
+   |     -> if not repeated/False -> continue algorithm -------------------------------------------
    |
    |
    -> if invalid/False:
       |
       -> if boardstate and deckstate are valid:
          |
-         -> if valid/True -> return state as valid and go back to previous checkpoint and mark move invalid
+         -> if valid/True -> return state as valid and go back to previous checkpoint and add state to achived states
          |
-         -> if invalid/False -> go back the previous checkpoint and mark move invalid
+         -> if invalid/False -> go back the previous checkpoint and add state to achived states
 
 
 algorithm finishes once returned back to the first state
 
+
+
+
+
+
+
+pack scanner algorithm:
+
+conditions for a pack:
+
+length >= 3
+
+
+
+ - runs -> same colour, increment by 1 number from start, no max size (highest possible max 26, 2x13 tiles)
+
+ - groups -> diff colour, same number, max size of 4
+
+
+
+ search for runs optimisations:
+  - only search in the same colour key
+  - only search for +- 1 digit
+  - never start with joker
+
+ search for groups optimisations:
+  - only search in different colour keys
+  - search for same digit
+  - never start with joker
+  
+
+
+
+
+
+
+
+
+
+
+
+
+using a dict structure for all data
