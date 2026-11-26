@@ -1,17 +1,17 @@
 
 state checker algorithm:
 
-makes a checkpoint   <-----------------------------------------------------------------------------
-|                                                                                                 |
--> scans for a valid pack combination                                                             |
-   |                                                                                              |
-   -> if valid/True:                                                                              |
-   |  |                                                                                           |
-   |  -> compare if state has already been achived (repeated)                                     |
-   |     |                                                                                        |
-   |     -> if repeated/True -> go back to previous checkpoint and add state to achived states    |
-   |     |                           ============================                                 |
-   |     -> if not repeated/False -> save state to possible plays and continue algorithm ----------
+makes a checkpoint   <---------------------------------------------------------------------------------------------------
+|                                                                                                                       |
+-> scans for a valid pack combination                                                                                   |
+   |                                                                                                                    |
+   -> if valid/True:                                                                                                    |
+   |  |                                                                                                                 |
+   |  -> compare if state has already been achived (repeated)                                                           |
+   |     |                                                                                                              |
+   |     -> if repeated/True -> go back to previous checkpoint                                                          |
+   |     |                           ============================                                                       |
+   |     -> if not repeated/False -> save state to possible plays and continue algorithmand add state to achived states -
    |                                 ============================
    |
    -> if invalid/False:
@@ -24,6 +24,45 @@ makes a checkpoint   <----------------------------------------------------------
 
 
 algorithm finishes once returned back to the first state
+
+
+
+
+
+Parent branch | checkpoint created, scans and holds all possible moves in a list initially <---|
+|                                                                                              |
+| - step                                                                                       |
+|                                                                                              |
+check if list is empty:
+   |
+   -> if moves list is not empty:   
+   |  |
+   |  -> if list not empty (more moves):
+   |    |
+   |    -> Remove the first move from list and THEN move down into a new branch (child)                   |
+   |    |                                                                                              |
+   |    -> compare state to achived states                                                             |
+   |       |                                                                                           |
+   |       -> if state achived (repeated) -> go back to parent branch                                  |
+   |       |                                                                                           |
+   |       -> else (unique state, not repeated) -------------------------------------------------------|
+   |
+   |  
+   -> if list is empty (no more moves):
+      |
+      -> 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

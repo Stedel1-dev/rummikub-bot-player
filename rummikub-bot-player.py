@@ -57,7 +57,7 @@ def init_deck(pile):
    
    deck = {}
    
-
+   # initialises the deck's dict, all values set to 0
    colours = ["black", "blue", "orange", "red"] # joker is also a colour, but isnt put here
    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
    
@@ -74,28 +74,28 @@ def init_deck(pile):
    deck["joker"][0] = [0, 0]
       
       
-      
+   # makes a list from the pile's dict so can choose a random tile
    pileList = []
-   # makes a list from the dict (pile)
+   
    for _ in range(2):
       for colour, numbers in pile.items():
          for number, _ in numbers.items():
             pileList.append((colour, number))
    
-   
+   # chooses random tile
    for _ in range(14):
       tile = random.choice(pileList)
       pileList.remove(tile)
       
       colour, number = tile
       
-      deck[colour] = {}
-      deck[colour][number] 
+      if number != 0: # if not joker
+         deck[colour][number][0] += 1
+         
+      else: # if is joker
+         deck[colour][number][1] += 1
       
       
-      
-   
-   
    
    return deck, pile
       
@@ -105,20 +105,88 @@ def init_deck(pile):
 
 
 
+# pack scanner algorithm:
+# 
+# conditions for a pack:
+# 
+# length >= 3
+# 
+# 
+# 
+#  - runs -> same colour, increment by 1 number from start, no max size (highest possible max 26, 2x13 tiles)
+# 
+#  - groups -> diff colour, same number, max size of 4
+# 
+# 
+# 
+#  search for runs optimisations:
+#   - only search in the same colour key
+#   - only search for +- 1 digit
+#   - never start with joker
+# 
+#  search for groups optimisations:
+#   - only search in different colour keys
+#   - search for same digit
+#   - never start with joker
 
 
 
-def dist_between_tiles():
+
+
+def updateAvaliableTiles(deck, board):
+   pass
+
+
+
+
+def is_tile_in_path(colour, number, avaliableTiles):
+   
+   if avaliableTiles[colour][number] != [0, 0]:
+      return True
+   
+   else:
+      return False
    
    
-   return distance
 
 
 
-def add_to_deck():
+COLOURS = ["black", "blue", "orange", "red"]
+NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
 
 
-
-def remove_from_deck():
+def find_run(avaliableTiles):
    
+   global COLOURS, NUMBERS
+   
+   runLen = 0
+   previousTile = (None, 0)
+   
+   
+   # find a run
+   for colour in COLOURS:
+      
+      
+      for number in NUMBERS:
+         
+         currentTile = (colour, number)
+         
+         
+         if is_tile_in_path(colour, number, avaliableTiles): # if tile is a member of the avaliable tiles
+            
+            if previousTile == (colour, number - 1): # tiles are in sequence
+               runLen += 1
+               
+               
+               
+               
+            
+               
+               
+               
+            
+            
+            
+            
+         previousTile = currentTile
